@@ -2,7 +2,9 @@ import './App.css';
 import React, { Component } from 'react';
 import Counters from './components/counters';
 import NavigationBar from './components/navigationBar';
-
+import CakeContainer from './components/cakeContainer';
+import { Provider } from 'react-redux';
+import store from './redux/store'
 class App extends Component {
   state = { 
     counters : [
@@ -46,12 +48,15 @@ class App extends Component {
  }
  render(){
   return (
+    <Provider store={store}>
     <React.Fragment>
-        <NavigationBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
+        {/* <NavigationBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
         <main className="container">
         <Counters countersState={this.state.counters} handleReset={this.handleReset} handleIncreementClick={this.handleIncreementClick} handleDeleteClick={this.handleDeleteClick}/> 
-        </main>  
+        </main>   */}
+        <CakeContainer/>
     </React.Fragment>
+    </Provider>
   );
 }
 }
